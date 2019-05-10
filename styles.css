@@ -1,0 +1,78 @@
+body {
+  margin: 0;
+}
+
+main {
+  padding-top: 30px;
+}
+
+.people {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: Arial;
+  text-align: center;
+}
+
+.person {
+  box-sizing: border-box;
+  margin: 0 30px 20px 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+.person-4,
+.person-8 {
+  margin-right: 0;
+}
+
+.photo {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 8px;
+}
+
+.photo > img {
+  width: 200px;
+  height: 200px;
+  border-radius: 200px;
+}
+
+.person > .details > .name {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  color: #2F4F4F;
+}
+
+.photo > .rank {
+  position: relative;
+  bottom: 119px;
+  left: 158px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 32px;
+  height: 32px;
+  background: #fff;
+  border-radius: 50%;
+  font-family: Arial;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
+  color: #8B0000;
+}
+
+.person > .details > .extra {
+  visibility: hidden;
+}
+
+.person:hover {
+  width: 220px;
+  height: 287px;
+  background: #EEEEEE;
+  border-radius: 10px;
+}
