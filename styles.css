@@ -2,77 +2,87 @@ body {
   margin: 0;
 }
 
-main {
-  padding-top: 30px;
-}
-
 .people {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  font-family: Arial, sans-serif;
+  grid: auto-flow/repeat(2, 200px);
+  gap: 40px 30px;
+  padding: 30px 35px 90px;
   justify-content: center;
-  font-family: Arial;
-  text-align: center;
 }
-
-.person {
-  box-sizing: border-box;
-  margin: 0 30px 20px 0;
-  padding: 0;
-  font-weight: bold;
-}
-
-.person-4,
-.person-8 {
-  margin-right: 0;
-}
-
-.photo {
-  width: 200px;
-  height: 200px;
-  margin-bottom: 8px;
-}
-
-.photo > img {
-  width: 200px;
-  height: 200px;
-  border-radius: 200px;
-}
-
-.person > .details > .name {
-  display: flex;
-  flex-direction: column;
-  font-size: 20px;
-  line-height: 23px;
-  text-align: center;
-  color: #2F4F4F;
-}
-
-.photo > .rank {
+.people .person {
   position: relative;
-  bottom: 119px;
-  left: 158px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  width: 32px;
-  height: 32px;
-  background: #fff;
+  transition: transform 1s linear;
+}
+.people .person .photo {
+  position: relative;
+}
+.people .person .photo img {
+  width: 100%;
   border-radius: 50%;
-  font-family: Arial;
-  font-size: 16px;
-  line-height: 18px;
+  transition: border-radius 1s;
+}
+.people .person .photo .rank {
+  position: absolute;
+  left: 158px;
+  bottom: 84px;
+  background: #ffffff;
+  border-radius: 50%;
+  width: 32px;
+  line-height: 32px;
   text-align: center;
   color: #8B0000;
+  font-weight: bold;
+  font-size: 16px;
 }
-
-.person > .details > .extra {
-  visibility: hidden;
+.people .person .details {
+  text-align: center;
 }
-
-.person:hover {
-  width: 220px;
-  height: 287px;
+.people .person .details .name {
+  font-size: 20px;
+  font-weight: bold;
+  display: block;
+  margin-top: 8px;
+  line-height: 23px;
+  color: #2F4F4F;
+}
+.people .person .details .extra {
+  display: none;
+}
+.people .person:hover {
+  z-index: 1;
+  transform: scale(1.2);
+}
+.people .person:hover .photo img {
+  border-radius: 25%;
+}
+.people .person:hover .extra {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  right: 0;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+}
+.people .person:hover::after {
+  position: absolute;
+  display: block;
+  content: "";
   background: #EEEEEE;
   border-radius: 10px;
+  top: -10px;
+  bottom: -46px;
+  left: -10px;
+  right: -10px;
+  z-index: -1;
 }
+
+@media (min-width: 950px) {
+  .people {
+    grid-template-columns: repeat(4, 200px);
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,110 @@
+$cardSize: 200px;
+$horizGap: 30px;
+$horizPad: 30px;
+$rankSize: 32px;
+$extraSize: 36px;
+$pseudoPad: -10px;
+$animPeriod: 1s;
+
+@function calcWidth($columns) {
+  @return $columns * $cardSize + $horizGap * ($columns - 1) + 2 * $horizPad;
+}
+
+body {
+  margin: 0;
+}
+
+.people {
+  display: grid;
+  font-family: Arial, sans-serif;
+  grid: auto-flow / repeat(2, $cardSize);
+  gap: 40px $horizGap;
+  padding: $horizPad 35px (3 * $horizPad);
+  justify-content: center;
+  
+  .person {
+    position: relative;
+    transition: transform $animPeriod linear;
+    
+    .photo {
+      position: relative;
+
+      img {
+        width: 100%;
+        border-radius: 50%;
+        transition: border-radius $animPeriod;
+      }
+
+      .rank {
+        position: absolute;
+        left: 158px;
+        bottom: ($cardSize - $rankSize) / 2;
+        background: #ffffff;
+        border-radius: 50%;
+        width: $rankSize;
+        line-height: $rankSize;
+        text-align: center;
+        color: #8B0000;
+        font-weight: bold;
+        font-size: 16px;
+      }
+    }
+    .details {
+      text-align: center;
+
+      .name {
+          font-size: 20px;
+          font-weight: bold;
+          display: block;
+          margin-top: 8px;
+          line-height: 23px;
+          color: #2F4F4F;
+        }
+      
+      .extra {
+        display: none;
+      }
+    }
+
+    &:hover {
+      z-index: 1;
+      transform: scale(1.2);
+
+      .photo {
+        img {
+          border-radius: 25%;
+        }
+      }
+      
+      .extra {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        right: 0;
+        height: $extraSize;
+        line-height: $extraSize;
+        text-align: center;
+      }
+        
+      &::after {
+        position: absolute;
+        display: block;
+        content: "";
+        background: #EEEEEE;
+        border-radius: 10px;
+        top: $pseudoPad;
+        bottom: $pseudoPad - $extraSize;
+        left: $pseudoPad;
+        right: $pseudoPad;
+        z-index: -1;
+      }
+    }
+  }
+}
+
+@media (min-width: calcWidth(4)) {
+  .people {
+    grid-template-columns: repeat(4, $cardSize)
+  }
+}
